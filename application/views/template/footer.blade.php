@@ -22,8 +22,8 @@
     <!-- ============================================================== -->
     <script src="{{ base_url('assets/js/lib/jquery.min.js') }}"></script>
     <script src="{{ base_url('assets/js/lib/jquery.plugin.js') }}"></script>
-    <script src="{{ base_url('assets/js/lib/bootstrap.min.js') }}"></script>
     <script src="{{ base_url('assets/plugin/popper.js/dist/umd/popper.min.js') }}"></script>
+    <script src="{{ base_url('assets/plugin/bootstrap/dist/js/bootstrap.min.js') }}"></script>
         <!-- costum js -->
         @if(!empty($js))
                 @foreach ($js as $url_js)
