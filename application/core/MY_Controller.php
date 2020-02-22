@@ -301,22 +301,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     $child = $this->_get_child_navigation($rec['nav_id']);
                     if (!empty($child)) {
                         $url_parent = 'javascript:void(0)';
-                        $sub_toggle = 'class="sidebar-sub-toggle"';
-                        $data_toggle = '<span class="sidebar-collapse-icon ti-angle-down"></span>';
+                        // $sub_toggle = 'class="sidebar-sub-toggle"';
+                        $data_toggle = '<ul aria-expanded="false" class="collapse  first-level base-level-line">';
+                        //parse
+                        $html .='
+                            <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="'.$url_parent.'"
+                            aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                            class="hide-menu">'.$rec['nav_title'].' </span></a>';
+                            if (!empty($child)) {
+                                $html .= '<ul aria-expanded="false" class="collapse  first-level base-level-line">'.$child.'</ul>';
+                            }
+                        $html .='</li>';
                     } else {
                         $url_parent = site_url($rec['nav_url']);
                         $data_toggle = '';
-                        $sub_toggle = '';
+                        // $sub_toggle = '';
+                        $html .='
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="'.$url_parent.'"
+                        aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
+                            class="hide-menu">'.$rec['nav_title'].'</span></a></li>';
                     }
-                    // selected
-                    $selected = ($rec['nav_id'] == $parent_selected) ? 'active' : '';
-
-                    //parse 
-                    $html .='
-                    <li class="'.$selected.'">
-                        <a  href="'.$url_parent.'" '.$sub_toggle.'><i class="'.$rec['nav_icon'].'"></i>'.$rec['nav_title'] . $data_toggle .'</a>
-                            '.$child.'
-                    </li>';
 
                 }
             }
@@ -426,12 +430,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     } else {
                         $url_parent = site_url($rec['nav_url']);
                     }
-                    // selected
-                    $selected = ($rec['nav_id'] == $parent_selected) ? 'active' : '';
-
                     // parse
-                    $html .= '<li>';
-                    $html .= '<a href="' . $url_parent . '">'. $rec['nav_title'] . '</a>';
+                    $html .= '<li class="sidebar-item">';
+                    $html .= '<a href="' . $url_parent . '" class="sidebar-link"><span class="hide-menu">'. $rec['nav_title'] . '</span></a>';
                     $html .= $child;
                     $html .= '</li>';
                 }
