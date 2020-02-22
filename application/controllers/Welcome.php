@@ -25,8 +25,8 @@ class Welcome extends MY_Controller {
 		--------------------------------------------------------*/
 		//parsing css url
 		$this->parsing_js([
-			'assets/js/lib/chart-js/Chart.bundle.js',
-			'assets/js/lib/chart-js/chartjs-init.js',
+			// 'assets/js/lib/chart-js/Chart.bundle.js',
+			// 'assets/js/lib/chart-js/chartjs-init.js',
 			]);
 		//parsing css url
 		$this->parsing_css([
