@@ -306,7 +306,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         //parse
                         $html .='
                             <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="'.$url_parent.'"
-                            aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span
+                            aria-expanded="false"><i class="'.$rec['nav_icon'].'"></i><span
                             class="hide-menu">'.$rec['nav_title'].' </span></a>';
                             if (!empty($child)) {
                                 $html .= '<ul aria-expanded="false" class="collapse  first-level base-level-line">'.$child.'</ul>';
@@ -318,7 +318,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         // $sub_toggle = '';
                         $html .='
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="'.$url_parent.'"
-                        aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
+                        aria-expanded="false"><i class="'.$rec['nav_icon'].'"></i><span
                             class="hide-menu">'.$rec['nav_title'].'</span></a></li>';
                     }
 
