@@ -31,4 +31,10 @@
         @endforeach
     @endif
 
+    <style>
+        .select2-container .select2-selection--single {
+            height: 40px !important;
+        }
+    </style>
+    
 </head>
