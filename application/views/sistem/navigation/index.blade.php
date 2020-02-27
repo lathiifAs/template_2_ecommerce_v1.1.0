@@ -70,12 +70,12 @@
                             <thead class="bg-primary text-white">
                                 <tr>
                                     <th class="text-align text-center" width="5%">No.</th>
-                                    <th class="text-align text-center" width="25%">Judul Navigasi</th>
+                                    <th class="text-align text-center" width="20%">Judul Navigasi</th>
                                     <th class="text-align text-center" width="10%">URL Navigasi</th>
-                                    <th class="text-align text-center" width="15%">Menu Client</th>
-                                    <th class="text-align text-center" width="20%">Digunakan</th>
+                                    <th class="text-align text-center" width="10%">Menu Client</th>
+                                    <th class="text-align text-center" width="10%">Digunakan</th>
                                     <th class="text-align text-center" width="10%">Ditampilkan</th>
-                                    <th class="text-align text-center" width="20%"></th>
+                                    <th class="text-align text-center" width="40%"></th>
                                 </tr>
                             </thead>
                             <tbody>

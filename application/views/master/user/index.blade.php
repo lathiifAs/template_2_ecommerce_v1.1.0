@@ -59,11 +59,11 @@
                                 <tr>
                                     <th class="text-align text-center" width="5%">No.</th>
                                     <th class="text-align text-center" width="15%">Nama</th>
-                                    <th class="text-align text-center" width="10%">Role</th>
-                                    <th class="text-align text-center" width="15%">Username</th>
-                                    <th class="text-align text-center" width="20%">Email</th>
-                                    <th class="text-align text-center" width="10%">Status</th>
-                                    <th class="text-align text-center" width="20%"></th>
+                                    <th class="text-align text-center" width="7%">Role</th>
+                                    <th class="text-align text-center" width="13%">Username</th>
+                                    <th class="text-align text-center" width="10%">Email</th>
+                                    <th class="text-align text-center" width="5%">Status</th>
+                                    <th class="text-align text-center" width="25%"></th>
                                 </tr>
                             </thead>
                             <tbody>
