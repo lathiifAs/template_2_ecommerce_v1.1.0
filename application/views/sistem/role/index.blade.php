@@ -23,6 +23,8 @@
 <!-- End Bread crumb and right sidebar toggle -->
 <!-- ============================================================== -->
 <div class="container-fluid">
+{{-- notif wajib ada di setiap halaman admin kecuali delete--}}
+    @include('template/notif')
     <!-- ============================================================== -->
     <!-- Start Page Content -->
     <!-- ============================================================== -->
@@ -34,6 +36,7 @@
                         <div class="row">
                             <h4 class="card-title col-lg-12">Daftar User</h4>
                         </div>
+
                         <form class="col-lg-12 row" action="{{ site_url('sistem/role/search_process') }}" method="POST">
                             <div class="col-lg-5">
                                 <select name="group_id" id="single" class="form-control select2-single">
