@@ -1,6 +1,6 @@
 <?php
 
-class MY_Router extends CI_Router {
+class Artdev_Router extends CI_Router {
     protected function _set_default_controller() {
 
         if (empty($this->default_controller)) {
