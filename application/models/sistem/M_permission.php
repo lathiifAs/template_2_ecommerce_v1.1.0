@@ -1,6 +1,6 @@
 <?php
 
-class M_permission extends CI_Model {
+class M_permission extends Artdev_Model {
 
 //generate id terakhir
   public function get_last_id()

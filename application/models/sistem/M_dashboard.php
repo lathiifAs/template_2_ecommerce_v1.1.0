@@ -1,6 +1,6 @@
 <?php
 
-class M_dashboard extends CI_Model {
+class M_dashboard extends Artdev_Model {
 
     public function total_user()
       {

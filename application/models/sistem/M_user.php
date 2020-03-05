@@ -1,6 +1,6 @@
 <?php
 
-class M_user extends CI_Model {
+class M_user extends Artdev_Model {
 
     //generate id terakhir
     public function generate_id($prefixdate, $params)
@@ -234,27 +234,5 @@ class M_user extends CI_Model {
         }
         return array();
     }
-
-    //insert
-    public function insert($table ,$params)
-    {
-      return $this->db->insert($table, $params);
-    }
-
-    //delete
-    public function delete($table ,$where)
-    {
-      $this->db->where($where);
-      return $this->db->delete($table);
-    }
-
-    //update
-    public function update($table, $params, $where)
-    {
-      $this->db->set($params);
-      $this->db->where($where);
-      return $this->db->update($table);
-    }
-  
     
 }

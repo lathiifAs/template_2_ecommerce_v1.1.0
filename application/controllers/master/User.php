@@ -56,16 +56,26 @@ class User extends Artdev_Controller {
 		// search session
 		$search = $this->session->userdata(self::SESSION_SEARCH);
 
-		//create pagination
 		$this->load->library('pagination');
+		$this->load->config('pagination');
+		$config = $this->config->item('pagination_config');
+		//create pagination
 		$total_row = $this->M_user->count_all();
+		//konfigurasi pagination
 		$config['base_url'] = base_url('index.php/master/user/index/');
-		$config['total_rows'] = $total_row;
-		$config['per_page'] = 10;
-		$from = $this->uri->segment(4);
-		$this->pagination->initialize($config);		
-		$result = $this->M_user->get_all($config['per_page'],$from, $search);
-		if (empty($result)) {
+		$config['total_rows'] = $total_row; //total row
+		$config['per_page'] = 10;  //show record per halaman
+		$config["uri_segment"] = 4;  // uri parameter
+		$choice = $config["total_rows"] / $config["per_page"];
+		$config["num_links"] = floor($choice);
+
+		$this->pagination->initialize($config);
+		$data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+		$limit = array($config["per_page"], $data['page']);
+		//panggil function get_mahasiswa_list yang ada pada mmodel mahasiswa_model. 
+		$data['data'] =   $this->M_user->get_all($config["per_page"], $data["page"], $search);           
+		$data['pagination'] = $this->pagination->create_links();
+		if (empty($data['data'])) {
 			$no = 0;
 		}else{
 			$no = 1;
@@ -84,9 +94,10 @@ class User extends Artdev_Controller {
 			'pesan' 		=> $notif['pesan'],
 			//
 			'search' 		=> $search,
-			'result' 		=> $result,
+			'result' 		=> $data['data'],
 			'no' 			=> $no,
-			'pagination'	=> $this->pagination->create_links()
+			'page' 			=> $data['page'],
+			'pagination'	=> $data['pagination']
 		];
 
 		//delete session notif

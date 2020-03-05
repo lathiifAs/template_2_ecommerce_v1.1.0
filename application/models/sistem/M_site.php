@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class M_site extends CI_Model {
+class M_site extends Artdev_Model {
 
     function __construct() {
         // Call the Model constructor

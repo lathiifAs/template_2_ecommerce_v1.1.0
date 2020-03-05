@@ -98,11 +98,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="text-right">
-                            @if (isset($pagination))
-                            {!! $pagination !!}
+                        @if (isset($pagination))
+                                {!! $pagination !!}
                             @endif
-                        </div>
                     </div>
                 </div>
             </div>

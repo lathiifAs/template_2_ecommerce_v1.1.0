@@ -1,6 +1,6 @@
 <?php
 
-class M_group extends CI_Model {
+class M_group extends Artdev_Model {
 
   //generate id terakhir
   public function get_last_id()
@@ -66,28 +66,6 @@ class M_group extends CI_Model {
           return $result;
         }
         return 0;
-    }
-
-    //insert
-    public function insert($table ,$params)
-    {
-      return $this->db->insert($table, $params);
-    }
-
-    //delete
-    public function delete($table ,$where)
-    {
-      $this->db->where($where);
-      return $this->db->delete($table);
-    }
-
-    //update
-    public function update($table, $params, $where)
-    {
-      $this->db->set($params);
-      $this->db->where($where);
-      return $this->db->update($table);
-    }
-  
+    }  
     
 }
