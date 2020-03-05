@@ -9,7 +9,7 @@ Phone : 	082126641201
 ----------------------
 */
 
-class Profile extends MY_Controller {
+class Profile extends Artdev_Controller {
 
 
     // constructor

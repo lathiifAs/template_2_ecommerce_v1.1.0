@@ -9,7 +9,7 @@ Phone : 	082126641201
 ----------------------
 */
 
-class Register_anggota extends MY_Controller {
+class Register_anggota extends Artdev_Controller {
 
     // constructor
 	public function __construct()

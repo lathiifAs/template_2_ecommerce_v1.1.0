@@ -9,7 +9,7 @@ Phone : 	082126641201
 ----------------------
 */
 
-class User extends MY_Controller {
+class User extends Artdev_Controller {
 
 	//init serach name
 	const SESSION_SEARCH = 'search_user';

@@ -9,7 +9,7 @@ Phone : 	082126641201
 ----------------------
 */
 
-class Beranda extends MY_Controller {
+class Beranda extends Artdev_Controller {
 
 	const SESSION_SEARCH = 'search_produk';
 	const SESSION_SEARCH_KATEGORI = 'search_produk_kategori';

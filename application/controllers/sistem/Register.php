@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 use Coolpraz\PhpBlade\PhpBlade;
 
-class Register extends MY_Controller{
+class Register extends Artdev_Controller{
     //init var
     public $mail_message = array();
 

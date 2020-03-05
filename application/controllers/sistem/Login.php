@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 use Coolpraz\PhpBlade\PhpBlade;
 
-class Login extends MY_Controller{
+class Login extends Artdev_Controller{
 
     public function __construct()
     {        
