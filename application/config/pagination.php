@@ -1,22 +1,22 @@
 <?php
-$config['pagination_config'] = array(
-    'first_link' 		=> 'First',
-		'last_link' 		=> 'Last',
-        'next_link'        => 'Next',
-        'prev_link'        => 'Prev',
-        'full_tag_open'    => '<nav aria-label="..."><ul class="pagination pagination-lg">',
-		'full_tag_close'   => '</ul></nav>',
-		
-        'num_tag_open'     => '<li>',
-        'num_tag_close'    => '</li>',
-        'cur_tag_open'     => '<li class="page-item disabled"><a href="#" tabindex="-1">',
-        'cur_tag_close'    => '</li>',
-        'next_tag_open'    => '<li>',
-        'next_tag_close'  => '</li>',
-        'prev_tag_open'    => '<li>',
-        'prev_tag_close'  => '</li>',
-        'first_tag_open'   => '<li>',
-        'first_tag_close' => '</li>',
-        'last_tag_open'    => '<li>',
-		'last_tag_close'  => '</li>'
+$config['pagination_config'] = array(        
+    // Membuat Style pagination untuk BootStrap v4
+    'first_link'       => 'First',
+    'last_link'        => 'Last',
+    'next_link'        => 'Next',
+    'prev_link'        => 'Prev',
+    'full_tag_open'    => '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">',
+    'full_tag_close'   => '</ul></nav></div>',
+    'num_tag_open'     => '<li class="page-item"><span class="page-link">',
+    'num_tag_close'    => '</span></li>',
+    'cur_tag_open'     => '<li class="page-item active"><span class="page-link">',
+    'cur_tag_close'    => '<span class="sr-only">(current)</span></span></li>',
+    'next_tag_open'    => '<li class="page-item"><span class="page-link">',
+    'next_tagl_close'  => '<span aria-hidden="true">&raquo,</span></span></li>',
+    'prev_tag_open'    => '<li class="page-item"><span class="page-link">',
+    'prev_tagl_close'  => '</span>Next</li>',
+    'first_tag_open'   => '<li class="page-item"><span class="page-link">',
+    'first_tagl_close' => '</span></li>',
+    'last_tag_open'    => '<li class="page-item"><span class="page-link">',
+    'last_tagl_close'  => '</span></li>',
 );

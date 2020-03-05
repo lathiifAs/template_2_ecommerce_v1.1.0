@@ -94,6 +94,8 @@ class Permission extends MY_Controller {
 			'no'			=> $no
 		];
 
+		// var_dump($data['pagination']);exit;
+
 		//delete session notif
 		$this->session->unset_userdata('sess_notif');
 		//parsing (template_content, variabel_parsing)

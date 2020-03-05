@@ -100,10 +100,7 @@
                         </table>
                         <div class="text-right">
                             @if (isset($pagination))
-                            <ul class="pagination pagination-sm">
-                                <li class="page-item"><a class="page-link" href="#">{!! $pagination !!}</a>
-                                </li>
-                            </ul>
+                            {!! $pagination !!}
                             @endif
                         </div>
                     </div>

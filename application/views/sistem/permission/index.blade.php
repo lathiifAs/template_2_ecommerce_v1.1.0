@@ -37,7 +37,8 @@
                             <h4 class="card-title col-lg-12">Daftar Hak Role</h4>
                         </div>
 
-                        <form class="col-lg-12 row" action="{{ site_url('sistem/permission/search_process') }}" method="POST">
+                        <form class="col-lg-12 row" action="{{ site_url('sistem/permission/search_process') }}"
+                            method="POST">
                             <div class="col-lg-5">
                                 <select name="nav_id" id="single" class="form-control select2-single">
                                     <option value='0'>Tidak ada</options>
@@ -80,14 +81,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="text-right">
                             @if (isset($pagination))
-                            <ul class="pagination pagination-sm">
-                                <li class="page-item"><a class="page-link" href="#">{!! $pagination !!}</a>
-                                </li>
-                            </ul>
+                                {!! $pagination !!}
                             @endif
-                        </div>
                     </div>
                 </div>
             </div>

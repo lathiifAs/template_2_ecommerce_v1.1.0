@@ -32,13 +32,13 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-10">
+                        <div class="col-lg-9">
                             <h4 class="card-title">Edit Data</h4>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                             <div class="text-right">
                                 <a href="{{ site_url('sistem/permission') }}" type="submit"
-                                    class="btn btn-primary">Kembali</a>
+                                    class="btn btn-primary"> Kembali </a>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -69,10 +69,7 @@
                             </form>
                             <div class="text-right">
                                 @if (isset($pagination))
-                                <ul class="pagination pagination-sm">
-                                    <li class="page-item"><a class="page-link" href="#">{!! $pagination !!}</a>
-                                    </li>
-                                </ul>
+                                {!! $pagination !!}
                                 @endif
                             </div>
                         </div>
