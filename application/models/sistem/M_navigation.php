@@ -33,6 +33,9 @@ class M_navigation extends Artdev_Model {
         $this->db->order_by('nav_id', 'ASC');
         $this->db->order_by('parent_id', 'ASC');
         $this->db->order_by('nav_no', 'ASC');
+        if (!empty($limit[2])) {
+          $this->db->where($limit[2]);
+        }
         $this->db->limit($limit[0], $limit[1]);
         $query = $this->db->get();
         // echo "<pre>"; echo $this->db->last_query();exit;

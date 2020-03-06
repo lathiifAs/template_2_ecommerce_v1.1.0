@@ -39,7 +39,7 @@
                             method="POST">
                             <div class="col-lg-6">
                                 <select name="nav_id" id="single" class="form-control select2-single">
-                                    <option value='0'>Navigasi</options>
+                                    <option value='0'>Pilih Navigasi</options>
                                         @foreach ($rs_menu as $menu)
                                     <option value="{{ $menu['nav_id'] }}">
                                         @if ($menu['parent_id'] == 0)

@@ -11,6 +11,9 @@ Phone : 	082126641201
 
 class Navigation extends Artdev_Controller {
 
+	//init serach name
+	const SESSION_SEARCH = 'search_nav';
+
     // constructor
 	public function __construct()
 	{
@@ -55,7 +58,10 @@ class Navigation extends Artdev_Controller {
 		$this->load->config('pagination');
 		$config = $this->config->item('pagination_config');
 		//search
-		$search = '';
+		$search = $this->session->userdata(self::SESSION_SEARCH);
+
+		// cek($search);
+
 		//create pagination
 		$total_row = $this->M_navigation->count_all();
 		//konfigurasi pagination
@@ -68,7 +74,7 @@ class Navigation extends Artdev_Controller {
 
 		$this->pagination->initialize($config);
 		$data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-		$limit = array($config["per_page"], $data['page']);
+		$limit = array($config["per_page"], $data['page'], $search);
 		//panggil function get_mahasiswa_list yang ada pada mmodel mahasiswa_model. 
 		$data['data'] =   $this->M_navigation->get_all($limit);           
 		$data['pagination'] = $this->pagination->create_links();
@@ -99,6 +105,22 @@ class Navigation extends Artdev_Controller {
 		$this->session->unset_userdata('sess_notif');
 		//parsing (template_content, variabel_parsing)
 		$this->parsing_template('sistem/navigation/index', $data);
+	}
+
+	public function search_process() {
+		// set page rules (untuk memberitahukan pada sistem bahwa halaman ini untuk R atau read Data) *wajib
+		$this->_set_page_rule("R");
+		if ($this->input->post('search', true) == "tampilkan") {
+		  $params = array(
+			'nav_id'   	=> $this->input->post('nav_id', true)
+		  );
+		  //menyimpan $params pada session dengan nama "search_user" dari variabel self::SESSION_SEARCH
+		  $this->session->set_userdata(self::SESSION_SEARCH, $params);
+		} else {
+		  $this->session->unset_userdata(self::SESSION_SEARCH);
+		}
+		//redirect
+		redirect("sistem/navigation");
 	}
 
 	public function add($notif='')
