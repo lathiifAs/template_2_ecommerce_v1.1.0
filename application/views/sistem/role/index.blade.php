@@ -34,14 +34,15 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="row">
-                            <h4 class="card-title col-lg-12">Daftar User</h4>
+                            <h4 class="card-title col-lg-12">Daftar Group</h4>
                         </div>
 
                         <form class="col-lg-12 row" action="{{ site_url('sistem/role/search_process') }}" method="POST">
                             <div class="col-lg-5">
                                 <select name="group_id" id="single" class="form-control select2-single">
+                                    <option value="">Pilih Group</option>    
                                     @foreach ($groups as $group)
-                                    <option value="{{ $group['group_id'] }}">{{ $group['group_name'] }}</option>
+                                    <option value="{{ $group['group_id'] }}" @if($group['group_id'] == $search['com_role.group_id']) selected @endif>{{ $group['group_name'] }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -106,7 +107,6 @@
 <script>
     $(document).ready(function () {
         $(".select2-single").select2({
-            placeholder: placeholder,
             width: '100%',
             containerCssClass: ':all:'
         });

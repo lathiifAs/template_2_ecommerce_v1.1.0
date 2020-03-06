@@ -26,10 +26,13 @@ class M_group extends Artdev_Model {
   }
 
     //get all
-    public function get_all($number,$offset)
+    public function get_all($number,$offset, $params)
     {
         $this->db->select('*');
         $this->db->from('com_group');
+        if (!empty($params)) {
+          $this->db->like($params);
+        }
         $this->db->limit($number, $offset); 
         $query = $this->db->get();
         if ($query->num_rows() > 0) {

@@ -26,11 +26,14 @@ class M_role extends Artdev_Model {
   }
 
     //get all
-    public function get_all($number,$offset)
+    public function get_all($number,$offset, $params)
     {
         $this->db->select('com_role.*, com_group.group_name');
         $this->db->from('com_role');
         $this->db->join('com_group', 'com_role.group_id = com_group.group_id', 'inner');
+        if (!empty($params)) {
+          $this->db->where($params);
+        }
         $this->db->limit($number, $offset); 
         $query = $this->db->get();
         if ($query->num_rows() > 0) {

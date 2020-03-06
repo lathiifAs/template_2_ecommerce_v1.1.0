@@ -11,7 +11,10 @@ Phone : 	082126641201
 
 class Group extends Artdev_Controller {
 
-    // constructor
+	//init serach name
+	const SESSION_SEARCH = 'search_group';
+
+	// constructor
 	public function __construct()
 	{
 		parent::__construct();
@@ -50,16 +53,26 @@ class Group extends Artdev_Controller {
 		//default notif
 		$notif = $this->session->userdata('sess_notif');
 
-		//create pagination
+		// search session
+		$search = $this->session->userdata(self::SESSION_SEARCH);
+
+		//pagination
 		$this->load->library('pagination');
+		$this->load->config('pagination');
+		$config = $this->config->item('pagination_config');
+
 		$total_row = $this->M_group->count_all();
 		$config['base_url'] = base_url('index.php/sistem/group/index/');
-		$config['total_rows'] = $total_row;
-		$config['per_page'] = 10;
-		$from = $this->uri->segment(4);
-		$this->pagination->initialize($config);		
-		$result = $this->M_group->get_all($config['per_page'],$from);
-		if (empty($result)) {
+		$config['total_rows'] = $total_row; //total row
+		$config['per_page'] = 10;  //show record per halaman
+		$config["uri_segment"] = 4;  // uri parameter
+		$choice = $config["total_rows"] / $config["per_page"];
+		$config["num_links"] = floor($choice);
+		$this->pagination->initialize($config);
+		$data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+		$data['data'] = $this->M_group->get_all($config["per_page"], $data["page"], $search);
+		$data['pagination'] = $this->pagination->create_links();
+		if (empty($data['data'])) {
 			$no = 0;
 		}else{
 			$no = 1;
@@ -74,15 +87,34 @@ class Group extends Artdev_Controller {
 		$data = [
 			'tipe'			=> $notif['tipe'],
 			'pesan' 		=> $notif['pesan'],
-			'result' 		=> $result,
+			'search' 		=> $search,
+			'result' 		=> $data['data'],
 			'no' 			=> $no,
-			'pagination'	=> $this->pagination->create_links()
+			'page' 			=> $data['page'],
+			'pagination'	=> $data['pagination']
 		];
 
 		//delete session notif
 		$this->session->unset_userdata('sess_notif');
 		//parsing (template_content, variabel_parsing)
 		$this->parsing_template('sistem/group/index', $data);
+	}
+
+	public function search_process() {
+		// set page rules (untuk memberitahukan pada sistem bahwa halaman ini untuk R atau read Data) *wajib
+		$this->_set_page_rule("R");
+
+		if ($this->input->post('search', true) == "tampilkan") {
+		  $params = array(
+			'group_name'   	=> $this->input->post('group_name', true)
+		  );
+		  //menyimpan $params pada session dengan nama "search_user" dari variabel self::SESSION_SEARCH
+		  $this->session->set_userdata(self::SESSION_SEARCH, $params);
+		} else {
+		  $this->session->unset_userdata(self::SESSION_SEARCH);
+		}
+		//redirect
+		redirect("sistem/group");
 	}
 
 	public function add($notif='')

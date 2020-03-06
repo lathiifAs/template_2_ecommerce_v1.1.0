@@ -67,35 +67,41 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($result as $rs)
-                                <tr>
-                                    <th class="text-align text-center"> {{ $no++ }} </th>
-                                    <td>{{ $rs['nama'] }}</td>
-                                    <td class="text-align text-center">{{ $rs['role_nm'] }}</td>
-                                    <td>{{ $rs['user_name'] }}</td>
-                                    <td>{{ $rs['user_mail'] }}</td>
-                                    <td class="text-align text-center">
-                                        @if ($rs['user_st'] == 0)
-                                        <span class="badge badge-danger">tidak aktif</span>
-                                        @elseif ($rs['user_st'] == 1)
-                                        <span class="badge badge-success">aktif</span>
-                                        @elseif ($rs['user_st'] == 2)
-                                        <span class="badge badge-danger">Block</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href="{{ site_url('master/user/detail/'.$rs['user_id']) }}" type="button"
-                                            class="btn btn-info btn-rounded m-b-10 m-l-5" title="Detail"><i
-                                                class="ti-eye"></i> Detail</a>
-                                        <a href="{{ site_url('master/user/edit/'.$rs['user_id']) }}"
-                                            class="btn btn-success btn-rounded m-b-10 m-l-5" title="Edit"><i
-                                                class="ti-pencil"></i> Edit</a>
-                                        <a href="{{ site_url('master/user/delete/'.$rs['user_id']) }}"
-                                            class="btn btn-danger btn-rounded m-b-10 m-l-5" title="Delete"><i
-                                                class="ti-trash"></i> Hapus</button>
-                                    </td>
-                                </tr>
-                                @endforeach
+                                @if(!empty($result))
+                                    @foreach ($result as $rs)
+                                    <tr>
+                                        <th class="text-align text-center"> {{ $no++ }} </th>
+                                        <td>{{ $rs['nama'] }}</td>
+                                        <td class="text-align text-center">{{ $rs['role_nm'] }}</td>
+                                        <td>{{ $rs['user_name'] }}</td>
+                                        <td>{{ $rs['user_mail'] }}</td>
+                                        <td class="text-align text-center">
+                                            @if ($rs['user_st'] == 0)
+                                            <span class="badge badge-danger">tidak aktif</span>
+                                            @elseif ($rs['user_st'] == 1)
+                                            <span class="badge badge-success">aktif</span>
+                                            @elseif ($rs['user_st'] == 2)
+                                            <span class="badge badge-danger">Block</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ site_url('master/user/detail/'.$rs['user_id']) }}" type="button"
+                                                class="btn btn-info btn-rounded m-b-10 m-l-5" title="Detail"><i
+                                                    class="ti-eye"></i> Detail</a>
+                                            <a href="{{ site_url('master/user/edit/'.$rs['user_id']) }}"
+                                                class="btn btn-success btn-rounded m-b-10 m-l-5" title="Edit"><i
+                                                    class="ti-pencil"></i> Edit</a>
+                                            <a href="{{ site_url('master/user/delete/'.$rs['user_id']) }}"
+                                                class="btn btn-danger btn-rounded m-b-10 m-l-5" title="Delete"><i
+                                                    class="ti-trash"></i> Hapus</button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <th class="text-align text-center" colspan="7"><h3> Data kosong </h3></th>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
                         @if (isset($pagination))

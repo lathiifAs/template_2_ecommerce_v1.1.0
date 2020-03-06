@@ -94,6 +94,7 @@ class Navigation extends Artdev_Controller {
 		$data = [
 			'tipe'			=> $notif['tipe'],
 			'pesan' 		=> $notif['pesan'],
+			'search' 		=> $search,
 			'result' 		=> $data['data'],
 			'page' 			=> $data['page'],
 			'pagination'	=> $data['pagination'],

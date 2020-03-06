@@ -40,7 +40,7 @@
                         <form class="col-lg-12 row" action="{{ site_url('sistem/group/search_process') }}"
                             method="POST">
                             <div class="col-lg-5">
-                                <input type="text" name="group_name" class="form-control" placeholder="Nama group...">
+                                <input type="text" name="group_name" class="form-control" value="{{ $search['group_name'] }}" placeholder="Nama group...">
                             </div>
                             <div class="col-lg-3">
                                 <button type="submit" name="search" value="tampilkan" class="btn btn-info">Cari</button>
@@ -64,24 +64,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($result as $rs)
-                                <tr>
-                                    <th class="text-align text-center"> {{ $no++ }} </th>
-                                    <td class="text-align">{{ $rs['group_name'] }}</td>
-                                    <td>{{ $rs['group_desc'] }}</td>
-                                    <td>
-                                        <a href="{{ site_url('sistem/group/detail/'.$rs['group_id']) }}" type="button"
-                                            class="btn btn-info btn-rounded m-b-10 m-l-5" title="Detail"><i
-                                                class="ti-eye"></i> Detail</a>
-                                        <a href="{{ site_url('sistem/group/edit/'.$rs['group_id']) }}"
-                                            class="btn btn-success btn-rounded m-b-10 m-l-5" title="Edit"><i
-                                                class="ti-pencil"></i> Edit </a>
-                                        <a href="{{ site_url('sistem/group/delete/'.$rs['group_id']) }}"
-                                            class="btn btn-danger btn-rounded m-b-10 m-l-5" title="Delete"><i
-                                                class="ti-trash"></i> Hapus</button>
-                                    </td>
-                                </tr>
-                                @endforeach
+                                @if(!empty($result))
+                                    @foreach ($result as $rs)
+                                    <tr>
+                                        <th class="text-align text-center"> {{ $no++ }} </th>
+                                        <td class="text-align">{{ $rs['group_name'] }}</td>
+                                        <td>{{ $rs['group_desc'] }}</td>
+                                        <td>
+                                            <a href="{{ site_url('sistem/group/detail/'.$rs['group_id']) }}" type="button"
+                                                class="btn btn-info btn-rounded m-b-10 m-l-5" title="Detail"><i
+                                                    class="ti-eye"></i> Detail</a>
+                                            <a href="{{ site_url('sistem/group/edit/'.$rs['group_id']) }}"
+                                                class="btn btn-success btn-rounded m-b-10 m-l-5" title="Edit"><i
+                                                    class="ti-pencil"></i> Edit </a>
+                                            <a href="{{ site_url('sistem/group/delete/'.$rs['group_id']) }}"
+                                                class="btn btn-danger btn-rounded m-b-10 m-l-5" title="Delete"><i
+                                                    class="ti-trash"></i> Hapus</button>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <th class="text-align text-center" colspan="4"><h3> Data kosong </h3></th>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
                         <div class="text-right">

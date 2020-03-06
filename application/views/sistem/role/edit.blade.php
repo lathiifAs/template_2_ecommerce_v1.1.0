@@ -52,10 +52,10 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                             <select name="group_id" id="group_id" class="form-control select2-single">
-                                                                @foreach ($groups as $group)
-                                                                <option value="{{ $group['group_id'] }}">{{ $group['group_name'] }}</option>
-                                                                @endforeach
-                                                            </select>
+                                                @foreach ($groups as $group)
+                                                <option value="{{ $group['group_id'] }}">{{ $group['group_name'] }}</option>
+                                                @endforeach
+                                            </select>
                                             </div>
                                         </div>
                                     </div>

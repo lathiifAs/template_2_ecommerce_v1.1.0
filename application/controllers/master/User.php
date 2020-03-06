@@ -17,7 +17,13 @@ class User extends Artdev_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		
+
+		/* debugging untuk mengetahui hasil dari sebuah variabel
+
+			cek($nama_variabel);
+
+		*/
+
 		// $this->session->set_userdata('com_user', 'lathiif');
 		//load models
 		$this->load->model('sistem/M_user');
@@ -67,11 +73,10 @@ class User extends Artdev_Controller {
 		$config['per_page'] = 10;  //show record per halaman
 		$config["uri_segment"] = 4;  // uri parameter
 		$choice = $config["total_rows"] / $config["per_page"];
-		$config["num_links"] = floor($choice);
+	$config["num_links"] = floor($choice);
 
 		$this->pagination->initialize($config);
 		$data['page'] = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-		$limit = array($config["per_page"], $data['page']);
 		//panggil function get_mahasiswa_list yang ada pada mmodel mahasiswa_model. 
 		$data['data'] =   $this->M_user->get_all($config["per_page"], $data["page"], $search);           
 		$data['pagination'] = $this->pagination->create_links();
